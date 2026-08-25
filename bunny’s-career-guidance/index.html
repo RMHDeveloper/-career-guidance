@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny’s Career Guidance - Rabbit Marketing House</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1A1A1A; /* Dark mode theme */
+            color: #E0E0E0; /* Light grey for general text for contrast */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        /* Custom styles for brutalist elements */
+        .brutalist-box {
+            border: 4px solid black;
+            box-shadow: 6px 6px 0px 0px black;
+        }
+        .brutalist-button {
+            border: 4px solid black;
+            box-shadow: 6px 6px 0px 0px black;
+        }
+        .brutalist-input {
+            border: 4px solid black;
+            box-shadow: 6px 6px 0px 0px black;
+        }
+        .text-neon-green {
+            color: #39FF14;
+        }
+        .bg-neon-green {
+            background-color: #39FF14;
+        }
+        .bg-electric-yellow {
+            background-color: #FBFF00;
+        }
+        .text-electric-yellow {
+            color: #FBFF00;
+        }
+        .heading-brutalist {
+            font-weight: 800; /* Extra bold */
+            text-transform: uppercase;
+        }
+
+        /* Custom keyframe animations for SpinningIcon */
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes spin-medium {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes spin-fast {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow { animation: spin-slow 6s linear infinite; }
+        .animate-spin-medium { animation: spin-medium 4s linear infinite; }
+        .animate-spin-fast { animation: spin-fast 2s linear infinite; }
+
+        /* Custom rule for result grid spacing */
+        .grid.grid-cols-1.lg\:grid-cols-2.gap-8.w-full.max-w-4xl.mt-8 {
+            margin-top: 50px;
+        }
+
+        /* NEW RULE AS REQUESTED */
+        .brutalist-box.bg-\[\#1A1A1A\].p-6.md\:p-8.flex.flex-col.brutalist-box {
+            margin-top: 30px;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
