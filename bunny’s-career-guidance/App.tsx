@@ -52,23 +52,21 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Top-Left Logo */}
+      {/* Header: logo (left) + back button (right), in normal flow so they never overlap the page content */}
       {currentPage !== 'loading' && (
-        <div className="absolute top-4 left-4 z-10"> {/* Removed brutalist-box, bg-[#1A1A1A], p-2 */}
-          <img 
-            src="https://rabbitmarketinghouse.in/webinar/assets/Untitled%20design%20(5).png" 
-            alt="Rabbit Marketing House Logo" 
-            className="w-12 h-12 object-contain" 
+        <div className="flex items-center justify-between p-4">
+          <img
+            src="https://rabbitmarketinghouse.in/webinar/assets/Untitled%20design%20(5).png"
+            alt="Rabbit Marketing House Logo"
+            className="w-12 h-12 object-contain"
           />
-        </div>
-      )}
-
-      {/* Top-Right Back Button */}
-      {currentPage === 'result' && (
-        <div className="absolute top-4 right-4 z-10">
-          <Button onClick={handleReset} variant="secondary" className="text-sm px-4 py-2">
-            GO BACK
-          </Button>
+          {currentPage === 'result' ? (
+            <Button onClick={handleReset} variant="secondary" className="text-sm px-4 py-2">
+              GO BACK
+            </Button>
+          ) : (
+            <div />
+          )}
         </div>
       )}
 
