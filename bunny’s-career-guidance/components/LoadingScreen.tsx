@@ -33,11 +33,11 @@ const LoadingScreen: React.FC = () => {
         <h1 className="heading-brutalist text-neon-green text-2xl sm:text-3xl md:text-4xl mt-8 mb-8 flex items-center justify-center min-h-[5rem]">
           {loadingMessages[currentMessageIndex]}
         </h1>
-        <div className="mt-8">
-          <p className="heading-brutalist text-electric-yellow text-4xl sm:text-5xl">
+        <div className="mt-8 w-full text-center">
+          <p className="heading-brutalist text-electric-yellow text-4xl sm:text-5xl text-center">
             BUNNY'S
           </p>
-          <p className="heading-brutalist text-black text-lg sm:text-xl -mt-2">
+          <p className="heading-brutalist text-black text-lg sm:text-xl -mt-2 text-center">
             CAREER GUIDANCE
           </p>
         </div>
