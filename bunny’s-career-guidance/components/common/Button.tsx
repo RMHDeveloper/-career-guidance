@@ -12,10 +12,10 @@ const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const baseClasses = "brutalist-button font-bold uppercase text-lg px-8 py-4 cursor-pointer active:translate-x-1 active:translate-y-1 active:shadow-none transition-all duration-75 ease-out";
+  const baseClasses = "brutalist-button font-bold text-lg px-8 py-4 cursor-pointer active:scale-[0.98] transition-all duration-150 ease-out flex items-center justify-center gap-2";
   const variantClasses = {
-    primary: "bg-neon-green text-black hover:bg-[#2eff00]", // Slightly brighter on hover
-    secondary: "bg-electric-yellow text-black hover:bg-[#edff00]", // Slightly brighter on hover
+    primary: "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700",
+    secondary: "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50",
   };
 
   return (

@@ -15,7 +15,7 @@ const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
       href={item.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="brutalist-box bg-[#1A1A1A] p-4 text-neon-green text-lg font-bold uppercase block brutalist-box hover:bg-[#2e2e2e] transition-colors duration-75 text-center"
+      className="brutalist-box bg-white p-4 text-neon-green text-lg font-bold uppercase block brutalist-box hover:bg-blue-50 transition-colors duration-75 text-center"
       aria-label={`Link to ${item.title}`}
     >
       {item.title}
@@ -25,7 +25,7 @@ const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, onReset }) => {
   return (
-    <div className="min-h-screen p-4 sm:p-8 flex flex-col items-center justify-center">
+    <div className="flex-1 p-4 sm:p-8 flex flex-col items-center justify-center overflow-auto">
       {roadmap ? (
         <div className="w-full max-w-4xl mt-8">
           {/* Removed the top Disclaimer Box as per user request */}
@@ -39,7 +39,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
               <p className="text-neon-green text-xl sm:text-2xl font-bold uppercase mb-2">
                 {roadmap.job_title}
               </p>
-              <div className="bg-electric-yellow text-black font-bold uppercase px-4 py-2 inline-block brutalist-box w-fit text-sm sm:text-base mb-6">
+              <div className="bg-blue-600 text-white font-bold uppercase px-4 py-2 inline-block brutalist-box w-fit text-sm sm:text-base mb-6">
                 AVG. SALARY: INR {roadmap.salary}
               </div>
 
@@ -47,44 +47,44 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
                 REQUIRED QUALIFICATIONS:
               </h3>
               {roadmap.qualifications && roadmap.qualifications.length > 0 ? (
-                <ul className="list-disc list-inside text-lg text-white space-y-2">
+                <ul className="list-disc list-inside text-lg text-black space-y-2">
                   {roadmap.qualifications.map((qualification, index) => (
                     <li key={index} className="pl-2">
-                      <span className="text-white">{qualification}</span>
+                      <span className="text-black">{qualification}</span>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="text-white text-base italic">No qualifications suggested.</p>
+                <p className="text-black text-base italic">No qualifications suggested.</p>
               )}
 
               <h3 className="heading-brutalist text-neon-green text-xl sm:text-2xl mt-6 mb-3">
                 RELATED DEGREES IN INDIA:
               </h3>
               {roadmap.related_degrees_in_india && roadmap.related_degrees_in_india.length > 0 ? (
-                <ul className="list-disc list-inside text-lg text-white space-y-2">
+                <ul className="list-disc list-inside text-lg text-black space-y-2">
                   {roadmap.related_degrees_in_india.map((degree, index) => (
                     <li key={index} className="pl-2">
-                      <span className="text-white">{degree}</span>
+                      <span className="text-black">{degree}</span>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="text-white text-base italic">No related degrees suggested.</p>
+                <p className="text-black text-base italic">No related degrees suggested.</p>
               )}
 
               <h3 className="heading-brutalist text-neon-green text-xl sm:text-2xl mt-6 mb-3">
                 ESSENTIAL TOOLS:
               </h3>
               {roadmap.tools && roadmap.tools.length > 0 ? (
-                <ul className="list-disc list-inside text-lg text-white space-y-2">
+                <ul className="list-disc list-inside text-lg text-black space-y-2">
                   {roadmap.tools.map((tool, index) => (
                     <li key={index} className="pl-2">
                       <a
                         href={tool.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-white hover:underline"
+                        className="text-black hover:underline"
                       >
                         {tool.title}
                       </a>
@@ -92,7 +92,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
                   ))}
                 </ul>
               ) : (
-                <p className="text-white text-base italic">No tools suggested.</p>
+                <p className="text-black text-base italic">No tools suggested.</p>
               )}
             </Box>
 
@@ -112,7 +112,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
                   ))}
                 </div>
               ) : (
-                <p className="text-white text-base italic">No verified courses found.</p>
+                <p className="text-black text-base italic">No verified courses found.</p>
               )}
 
               <h3 className="heading-brutalist text-neon-green text-xl sm:text-2xl mt-6 mb-3">
@@ -125,7 +125,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
                   ))}
                 </div>
               ) : (
-                <p className="text-white text-base italic">No YouTube channels found.</p>
+                <p className="text-black text-base italic">No YouTube channels found.</p>
               )}
             </Box>
           </div>
@@ -145,7 +145,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
           <p className="heading-brutalist text-neon-green text-xl sm:text-2xl mb-4">
             ERROR:
           </p>
-          <p className="text-white text-lg sm:text-xl mb-6">
+          <p className="text-black text-lg sm:text-xl mb-6">
             {errorMessage || 'An unknown error occurred. Please try again.'}
           </p>
           <p className="text-electric-yellow text-base sm:text-lg">

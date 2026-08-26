@@ -22,7 +22,7 @@ const LoadingScreen: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 sm:p-8">
+    <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
       <Box className="flex flex-col items-center justify-center p-8 sm:p-12 md:p-16 text-center w-full max-w-lg brutalist-box">
         {/* Replaced SpinningIcon with the actual logo image */}
         <img
@@ -37,7 +37,7 @@ const LoadingScreen: React.FC = () => {
           <p className="heading-brutalist text-electric-yellow text-4xl sm:text-5xl">
             BUNNY'S
           </p>
-          <p className="heading-brutalist text-white text-lg sm:text-xl -mt-2">
+          <p className="heading-brutalist text-black text-lg sm:text-xl -mt-2">
             CAREER GUIDANCE
           </p>
         </div>

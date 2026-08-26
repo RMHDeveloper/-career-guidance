@@ -52,7 +52,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A] text-white flex flex-col relative"> {/* Added relative for absolute positioning of children */}
+    <div className="min-h-screen bg-slate-50 text-black flex flex-col relative"> {/* Added relative for absolute positioning of children */}
       {/* Global Error Message */}
       {appErrorMessage && (
         <div className="absolute top-0 left-0 right-0 p-4 bg-red-800 text-white text-center font-bold uppercase brutalist-box z-50">
@@ -80,14 +80,14 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <div className="flex-grow">
+      <div className="flex-grow flex flex-col">
         {currentPage === 'loading' && <LoadingScreen />}
         {currentPage === 'input' && <InputForm onSubmit={handleGenerateRoadmap} />}
         {currentPage === 'result' && (
           <ResultDisplay roadmap={roadmapData} errorMessage={aiErrorMessage} onReset={handleReset} />
         )}
       </div>
-      <footer className="w-full text-center py-4 brutalist-box bg-[#1A1A1A] text-electric-yellow text-sm sm:text-base font-bold uppercase mt-8">
+      <footer className="w-full text-center py-4 bg-blue-600 text-white text-xs sm:text-sm font-semibold mt-8">
         Developed by Rabbit Marketing House
       </footer>
     </div>

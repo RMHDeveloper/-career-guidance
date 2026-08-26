@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from './common/Box';
 import Input from './common/Input';
 import Button from './common/Button';
+import { BriefcaseIcon, SearchIcon, RocketIcon } from './common/Icons';
 
 interface InputFormProps {
   onSubmit: (qualification: string, interests: string) => void;
@@ -48,15 +49,19 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 sm:p-8">
-      <Box className="w-full max-w-2xl brutalist-box">
-        <h1 className="heading-brutalist text-neon-green text-3xl sm:text-4xl text-center mb-8">
-          BUNNY’S CAREER GUIDANCE
+    <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
+      <Box className="w-full max-w-md brutalist-box">
+        <h1 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+          Start Your Journey
         </h1>
+        <p className="text-gray-500 text-center mb-8">
+          Tell us about yourself to get a personalized roadmap
+        </p>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <Input
             id="qualification"
-            label="QUALIFICATION"
+            label="Qualification"
+            icon={<BriefcaseIcon />}
             placeholder="E.g., B.Com, Digital Creator, Developer"
             value={qualification}
             onChange={(e) => setQualification(e.target.value)}
@@ -65,7 +70,8 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
           <div>
             <Input
               id="interests"
-              label="INTERESTS"
+              label="Interests"
+              icon={<SearchIcon />}
               placeholder="E.g., Web Development, AI, Data Analysis"
               value={interests}
               onChange={handleInterestsChange}
@@ -74,14 +80,15 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
               aria-describedby={interestsError ? "interests-error" : undefined}
             />
             {interestsError && (
-              <p id="interests-error" className="text-electric-yellow font-bold uppercase text-sm mt-2">
+              <p id="interests-error" className="text-red-600 font-semibold text-sm mt-2">
                 {interestsError}
               </p>
             )}
           </div>
-          <div className="pt-4">
+          <div className="pt-2">
             <Button type="submit" className="w-full" disabled={!!interestsError}>
               BUILD MY ROADMAP
+              <RocketIcon className="w-5 h-5" />
             </Button>
           </div>
         </form>

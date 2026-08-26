@@ -8,38 +8,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #1A1A1A; /* Dark mode theme */
-            color: #E0E0E0; /* Light grey for general text for contrast */
+            background-color: #F8FAFC; /* Soft light-gray backdrop */
+            color: #111111; /* Near-black for general text for contrast */
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
-        /* Custom styles for brutalist elements */
+        /* Soft rounded-card styles (formerly the brutalist hard-shadow look) */
         .brutalist-box {
-            border: 4px solid black;
-            box-shadow: 6px 6px 0px 0px black;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.38), 0 8px 10px -6px rgba(0,0,0,0.36);
         }
         .brutalist-button {
-            border: 4px solid black;
-            box-shadow: 6px 6px 0px 0px black;
+            border: none;
+            border-radius: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(37,99,235,0.3), 0 4px 6px -4px rgba(37,99,235,0.3);
         }
         .brutalist-input {
-            border: 4px solid black;
-            box-shadow: 6px 6px 0px 0px black;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.875rem;
         }
         .text-neon-green {
-            color: #39FF14;
-        }
-        .bg-neon-green {
-            background-color: #39FF14;
-        }
-        .bg-electric-yellow {
-            background-color: #FBFF00;
+            color: #2563EB;
         }
         .text-electric-yellow {
-            color: #FBFF00;
+            color: #1E40AF;
         }
         .heading-brutalist {
             font-weight: 800; /* Extra bold */
-            text-transform: uppercase;
         }
 
         /* Custom keyframe animations for SpinningIcon */
