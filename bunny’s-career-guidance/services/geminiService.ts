@@ -97,6 +97,7 @@ Requirements:
           },
 
           temperature: 0.4,
+          max_tokens: 2048,
         }),
       }
     );
