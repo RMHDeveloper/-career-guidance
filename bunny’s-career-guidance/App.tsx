@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import InputForm from './components/InputForm';
 import ResultDisplay from './components/ResultDisplay';
@@ -7,18 +7,10 @@ import { generateCareerRoadmap } from './services/geminiService';
 import Button from './components/common/Button'; // Import Button for the new back button
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<PageState>('loading'); // Start on loading page
+  const [currentPage, setCurrentPage] = useState<PageState>('input');
   const [roadmapData, setRoadmapData] = useState<CareerRoadmap | null>(null);
   const [aiErrorMessage, setAiErrorMessage] = useState<string | null>(null);
   const [appErrorMessage, setAppErrorMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentPage('input');
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleGenerateRoadmap = useCallback(async (qualification: string, interests: string) => {
     setCurrentPage('loading');
