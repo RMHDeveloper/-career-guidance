@@ -15,7 +15,7 @@ const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
       href={item.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="brutalist-box bg-white p-4 text-neon-green text-lg font-bold uppercase block brutalist-box hover:bg-blue-50 transition-colors duration-75 text-center"
+      className="brutalist-box bg-white p-4 text-neon-green text-lg font-bold uppercase block brutalist-box hover:bg-blue-50 transition-colors duration-75 text-center wrap-break-word"
       aria-label={`Link to ${item.title}`}
     >
       {item.title}
