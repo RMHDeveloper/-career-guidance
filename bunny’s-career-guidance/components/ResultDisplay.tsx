@@ -15,7 +15,7 @@ const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
       href={item.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="brutalist-box bg-white p-4 text-neon-green text-lg font-bold uppercase block brutalist-box hover:bg-blue-50 transition-colors duration-75 text-center wrap-break-word"
+      className="brutalist-box bg-blue-600 p-4 text-white text-sm sm:text-base font-bold uppercase flex items-center justify-center min-h-18 leading-snug hover:bg-blue-700 transition-colors duration-75 text-center wrap-break-word"
       aria-label={`Link to ${item.title}`}
     >
       {item.title}
@@ -135,7 +135,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
             <p className="heading-brutalist text-electric-yellow text-base sm:text-lg mb-4">
               AI-GENERATED SUGGESTIONS. VERIFY ALL INFORMATION BEFORE MAKING CAREER DECISIONS.
             </p>
-            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto">
+            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto">
               START NEW
             </Button>
           </Box>
@@ -151,7 +151,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
           <p className="text-electric-yellow text-base sm:text-lg">
             Consider refining your input.
           </p>
-          <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mt-8">
+          <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto mt-8">
             TRY AGAIN
           </Button>
         </Box>

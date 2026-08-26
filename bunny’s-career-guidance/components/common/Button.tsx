@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   const baseClasses = "brutalist-button font-bold text-lg px-8 py-4 cursor-pointer active:scale-[0.98] transition-all duration-150 ease-out flex items-center justify-center gap-2";
   const variantClasses = {
     primary: "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700",
-    secondary: "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50",
+    secondary: "bg-blue-600 text-white hover:bg-blue-700",
   };
 
   return (
