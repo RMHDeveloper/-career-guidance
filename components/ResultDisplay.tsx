@@ -135,7 +135,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
             <p className="heading-brutalist text-electric-yellow text-base sm:text-lg mb-4">
               AI-GENERATED SUGGESTIONS. VERIFY ALL INFORMATION BEFORE MAKING CAREER DECISIONS.
             </p>
-            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto">
+            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto bg-none bg-red-600 hover:bg-red-700 text-white">
               START NEW
             </Button>
           </Box>
