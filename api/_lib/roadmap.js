@@ -1,8 +1,6 @@
-export async function generateRoadmap(qualification, interests, apiKey) {
-  if (!apiKey) {
-    throw new Error("OPENROUTER_API_KEY is not set in the environment variables.");
-  }
+import { generateJson } from './gemini.js';
 
+export async function generateRoadmap(qualification, interests, apiKey) {
   const prompt = `
 You are an expert career guidance assistant for students and professionals in India.
 
@@ -54,42 +52,5 @@ Requirements:
 - Return JSON only.
 `;
 
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: "google/gemini-2.5-flash",
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-      response_format: {
-        type: "json_object",
-      },
-      temperature: 0.4,
-      max_tokens: 2048,
-    }),
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("OpenRouter API Error:", errorText);
-    const err = new Error(`OpenRouter request failed with status ${response.status}`);
-    err.status = response.status;
-    throw err;
-  }
-
-  const data = await response.json();
-  const content = data.choices?.[0]?.message?.content;
-
-  if (!content) {
-    throw new Error("OpenRouter returned an empty response.");
-  }
-
-  return JSON.parse(content);
+  return generateJson(prompt, apiKey, { temperature: 0.4, maxOutputTokens: 2048 });
 }

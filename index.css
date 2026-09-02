@@ -56,3 +56,25 @@ body {
 .brutalist-box.bg-\[\#1A1A1A\].p-6.md\:p-8.flex.flex-col.brutalist-box {
     margin-top: 30px;
 }
+
+/* Print / "Download PDF" styles: keep only the roadmap on the page */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background-color: #ffffff;
+    }
+    .brutalist-box {
+        box-shadow: none;
+        border: 1px solid #cccccc;
+        break-inside: avoid;
+    }
+    .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}

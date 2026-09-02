@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from './common/Box';
 import Button from './common/Button';
+import FollowUpChat from './FollowUpChat';
+import RoadmapInsights from './RoadmapInsights';
+import ResumeKit from './ResumeKit';
 import { CareerRoadmap, ResourceItem } from '../types';
 
 interface ResultDisplayProps {
   roadmap: CareerRoadmap | null;
   errorMessage?: string | null;
   onReset: () => void;
+  qualification?: string;
+  interests?: string;
+  currentSkills?: string;
+  savedId?: string;
 }
 
 const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
@@ -23,12 +30,61 @@ const ResourceCard: React.FC<{ item: ResourceItem }> = ({ item }) => {
   );
 };
 
-const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, onReset }) => {
+const RoadmapToolbar: React.FC<{
+  qualification?: string;
+  interests?: string;
+}> = ({ qualification, interests }) => {
+  const [copied, setCopied] = useState(false);
+
+  const canShare = Boolean(qualification && interests);
+
+  const handleCopyLink = async () => {
+    const url = `${window.location.origin}${window.location.pathname}?q=${encodeURIComponent(
+      qualification || ''
+    )}&i=${encodeURIComponent(interests || '')}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.prompt('Copy this link:', url);
+    }
+  };
+
+  return (
+    <div className="no-print flex flex-wrap gap-3 justify-center mb-2">
+      {canShare && (
+        <button
+          onClick={handleCopyLink}
+          className="brutalist-button bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-3 cursor-pointer transition-colors"
+        >
+          {copied ? 'LINK COPIED!' : 'COPY SHAREABLE LINK'}
+        </button>
+      )}
+      <button
+        onClick={() => window.print()}
+        className="brutalist-button bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 font-bold text-sm px-5 py-3 cursor-pointer transition-colors"
+      >
+        DOWNLOAD PDF
+      </button>
+    </div>
+  );
+};
+
+const ResultDisplay: React.FC<ResultDisplayProps> = ({
+  roadmap,
+  errorMessage,
+  onReset,
+  qualification,
+  interests,
+  currentSkills,
+  savedId,
+}) => {
   return (
     <div className="flex-1 p-4 sm:p-8 flex flex-col items-center justify-center overflow-auto">
       {roadmap ? (
         <div className="w-full max-w-4xl mt-8">
-          {/* Removed the top Disclaimer Box as per user request */}
+          <RoadmapToolbar qualification={qualification} interests={interests} />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
             {/* Box 1: The Profile */}
@@ -130,12 +186,33 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ roadmap, errorMessage, on
             </Box>
           </div>
 
+          <div className="mt-8">
+            <RoadmapInsights
+              roadmap={roadmap}
+              qualification={qualification || ''}
+              interests={interests || ''}
+              currentSkills={currentSkills}
+              savedId={savedId}
+            />
+          </div>
+
+          <div className="mt-8">
+            <ResumeKit
+              roadmap={roadmap}
+              qualification={qualification || ''}
+              interests={interests || ''}
+              currentSkills={currentSkills}
+            />
+          </div>
+
+          <FollowUpChat roadmap={roadmap} />
+
           {/* This Disclaimer and "START NEW" button will remain */}
           <Box className="text-center mt-8 brutalist-box">
             <p className="heading-brutalist text-electric-yellow text-base sm:text-lg mb-4">
               AI-GENERATED SUGGESTIONS. VERIFY ALL INFORMATION BEFORE MAKING CAREER DECISIONS.
             </p>
-            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto bg-none bg-red-600 hover:bg-red-700 text-white">
+            <Button onClick={onReset} variant="primary" className="w-full sm:w-auto mx-auto bg-none bg-red-600 hover:bg-red-700 text-white no-print">
               START NEW
             </Button>
           </Box>
