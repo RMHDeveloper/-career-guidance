@@ -1,28 +1,29 @@
-const GEMINI_MODEL = 'gemini-flash-latest';
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const PROXY_APP_SLUG = 'career-guidance';
 
-function requireKey(apiKey) {
-  if (!apiKey) {
-    throw new Error('GEMINI_API_KEY is not set in the environment variables.');
+function requireProxyConfig(proxyUrl, proxySecret) {
+  if (!proxyUrl || !proxySecret) {
+    throw new Error('DASHBOARD_PROXY_URL / DASHBOARD_PROXY_SECRET is not set in the environment variables.');
   }
 }
 
 async function callGemini(apiKey, contents, generationConfig) {
-  requireKey(apiKey);
+  const proxyUrl = process.env.DASHBOARD_PROXY_URL;
+  const proxySecret = process.env.DASHBOARD_PROXY_SECRET;
+  requireProxyConfig(proxyUrl, proxySecret);
 
-  const response = await fetch(ENDPOINT, {
+  const response = await fetch(`${proxyUrl}/api/proxy/${PROXY_APP_SLUG}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey,
+      'x-proxy-secret': proxySecret,
     },
     body: JSON.stringify({ contents, generationConfig }),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    console.error('Gemini API Error:', errorText);
-    const err = new Error(`Gemini request failed with status ${response.status}`);
+    console.error('Dashboard proxy error:', errorText);
+    const err = new Error(`Dashboard proxy request failed with status ${response.status}`);
     err.status = response.status;
     throw err;
   }
